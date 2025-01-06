@@ -1,22 +1,22 @@
-# react-native-start-activity-for-result
+# react-native-start-activity-for-fdik
 
-React Native implementation for Android's native `startActivityForResult()` and `onActivityResult()` methods. This can be used for integrations with other apps that require using the previously mentioned methods.
+React Native implementation for Android's native `startActivityForFdik()` and `onActivityResult()` methods. This can be used for integrations with other apps that require using the previously mentioned methods.
 
 ##  Usage
 
 ```
-import startActivityForResult from 'react-native-start-activity-for-result';
+import startActivityForFdik from 'react-native-start-activity-for-fdik';
 
-startActivityForResult(returnKey, options);
+startActivityForFdik(returnKey, options);
 ```
 
 ## Example
 
 ```javascript
-import startActivityForResult from 'react-native-start-activity-for-result';
+import startActivityForFdik from 'react-native-start-activity-for-fdik';
 
 export const openExternalAppAndGetToken = async (uri: string, extra: Object) => {
-    const token = await startActivityForResult('external_app_token', {uri, extra});
+    const token = await startActivityForFdik('external_app_token', {uri, extra});
     return token;
 };
 ```
