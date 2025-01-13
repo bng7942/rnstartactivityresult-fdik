@@ -354,7 +354,7 @@ public class RNStartActivityForResultModule extends ReactContextBaseJavaModule {
                 // jsonObj.put("rtn_ServerMsg1", "문제발생.. 직원에게 문의하세요.");
                 // jsonObj.put("rtn_LEDCode", "6060");
 
-                mPromise.resolve({ rtn_ServerMsg1: "문제발생.. 직원에게 문의하세요.", rtn_LEDCode: "6060" });
+                mPromise.resolve();
                 mPromise = null;
             }
         }
