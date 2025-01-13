@@ -121,7 +121,7 @@ public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule {
 
             returnKey = key;
 
-            currentActivity.startActivityForFdik(intent, ACTIVITY_REQUEST_CODE);
+            currentActivity.startActivityForResult(intent, ACTIVITY_REQUEST_CODE);
         } catch (Exception e) {
             // JSONObject jsonObj = new JSONObject();
                     
