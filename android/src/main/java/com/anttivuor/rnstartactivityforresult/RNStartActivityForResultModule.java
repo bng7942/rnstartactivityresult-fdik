@@ -74,9 +74,12 @@ public class RNStartActivityForResultModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void startActivityForResult(String key, String uri, String action, 
-        String byTran, String byTID, String byInstall, String byAmt, 
-        String byTaxAmt, String bySfeeAmt, String byFreeAmt, String byOrgDate, 
-        String byOrgAuth, String byIdno, Promise promise) {
+        String cardCashSe, String delngSe, String total, 
+        String vat, String taxxpt, String instlmtMonth, String callbackAppUr, 
+        String aditInfo, String srcConfmNo, String srcConfmDe, String barcodeNum,
+        String cashNum, String trmnlno, String prdctNo, String bizNo, String uscMuf, 
+        String REFERENCE_NO, String KakaoDiscount, String KakaoPayType, String PaycoDiscount, 
+        String PaycoPayType, String cupDeposit, Promise promise) {
 
         Activity currentActivity = getCurrentActivity();
 
@@ -88,28 +91,33 @@ public class RNStartActivityForResultModule extends ReactContextBaseJavaModule {
         mPromise = promise;
 
         try {
-            Log.d("VPOS-D", uri);
+            Log.d("fpispkpn-D", uri);
             String intentAction = action == null ? Intent.ACTION_VIEW : action;
             Intent intent = new Intent(Intent.ACTION_MAIN, Uri.parse(uri));
             intent.setAction(Intent.ACTION_VIEW);
             
-            intent.putExtra("byActive", "OutSideAppr");
-            intent.putExtra("byTran", byTran);
-            intent.putExtra("byTID", byTID);              // 단말기번호
-            intent.putExtra("byInstall", byInstall);          // 할부개월수
-            intent.putExtra("byAmt", byAmt);              // 총금액
-            intent.putExtra("byOrgDate", byOrgDate);          // 원거래일자
-            intent.putExtra("byOrgAuth", byOrgAuth);          // 원거래승인번호
-            intent.putExtra("byTranSerial", getTime().substring(8, 14));          // 거래일련번호
-            intent.putExtra("byIdno", byIdno);          //현금/수표 식별번호
-            intent.putExtra("byTaxAmt", byTaxAmt);          //세금
-            intent.putExtra("bySfeeAmt", bySfeeAmt);          //봉사료
-            intent.putExtra("byFreeAmt", byFreeAmt);      //비과세
-            intent.putExtra("byAppCardNum", "                     ");          // APP 카드번호
-            intent.putExtra("bySeumGbun", "  ");          // 세움 거래 구분 / 서명 재사용
-            intent.putExtra("byBUSI", "          ");          //다중사업자번호/사업자번호
-
-            intent.putExtra("byDate", getTime().substring(0, 14));             // 거래 요청 일자
+            intent.putExtra("cardCashSe", cardCashSe);
+            intent.putExtra("delngSe", delngSe);
+            intent.putExtra("total", total);
+            intent.putExtra("vat", vat);
+            intent.putExtra("taxxpt", taxxpt);
+            intent.putExtra("instlmtMonth", instlmtMonth);
+            intent.putExtra("callbackAppUr", callbackAppUr);
+            intent.putExtra("aditInfo", aditInfo);
+            intent.putExtra("srcConfmNo", srcConfmNo);
+            intent.putExtra("srcConfmDe", srcConfmDe);
+            intent.putExtra("barcodeNum", barcodeNum);
+            intent.putExtra("cashNum", cashNum);
+            intent.putExtra("trmnlno", trmnlno);
+            intent.putExtra("prdctNo", prdctNo);
+            intent.putExtra("bizNo", bizNo);
+            intent.putExtra("uscMuf", uscMuf);
+            intent.putExtra("REFERENCE_NO", REFERENCE_NO);
+            intent.putExtra("KakaoDiscount", KakaoDiscount);
+            intent.putExtra("KakaoPayType", KakaoPayType);
+            intent.putExtra("PaycoDiscount", PaycoDiscount);
+            intent.putExtra("PaycoPayType", PaycoPayType);
+            intent.putExtra("cupDeposit", cupDeposit);            
 
             returnKey = key;
 
@@ -195,30 +203,52 @@ public class RNStartActivityForResultModule extends ReactContextBaseJavaModule {
 
             if (requestCode == MSG_REQUEST_OUTSIDEAPPR) {
                 if (resultCode == MSG_STATE_OK) {
-                    Log.d("VPOS-D","dKKKKKKKKKKKKKKKKKKdd");
+                    Log.d("fpispkpn-D","dKKKKKKKKKKKKKKKKKKdd");
                     JSONObject jsonObj = new JSONObject();
 
-                    jsonObj.put("rtn_Tran", data.getStringExtra("rtn_Tran"));
-                    jsonObj.put("rtn_LEDCode", data.getStringExtra("rtn_LEDCode"));
-                    jsonObj.put("rtn_CardBinNum", data.getStringExtra("rtn_CardBinNum"));
-                    jsonObj.put("rtn_Install", data.getStringExtra("rtn_Install"));
-                    jsonObj.put("rtn_AmountNum", data.getStringExtra("rtn_AmountNum"));
-                    jsonObj.put("rtn_SevDate", data.getStringExtra("rtn_SevDate"));
-                    jsonObj.put("rtn_SevTime", data.getStringExtra("rtn_SevTime"));
-                    jsonObj.put("rtn_Authno", data.getStringExtra("rtn_Authno"));
-                    jsonObj.put("rtn_CreditMbrCode", data.getStringExtra("rtn_CreditMbrCode"));
-                    jsonObj.put("rtn_VANUnqTranNum", data.getStringExtra("rtn_VANUnqTranNum"));
-                    jsonObj.put("rtn_IssuerName", data.getStringExtra("rtn_IssuerName"));
-                    jsonObj.put("rtn_PurchaseName", data.getStringExtra("rtn_PurchaseName"));
-                    jsonObj.put("rtn_ServerMsg1", data.getStringExtra("rtn_ServerMsg1"));
-                    jsonObj.put("rtn_PrintMsg1", data.getStringExtra("rtn_PrintMsg1"));
-                    jsonObj.put("rtn_CardTypeGubun", data.getStringExtra("rtn_CardTypeGubun"));
+                    jsonObj.put("cardCashSe", data.getStringExtra("cardCashSe"));
+                    jsonObj.put("delngSe", data.getStringExtra("delngSe"));
+                    jsonObj.put("setleSuccesAt", data.getStringExtra("setleSuccesAt"));
+                    jsonObj.put("setleMessage", data.getStringExtra("setleMessage"));
+                    jsonObj.put("confmNo", data.getStringExtra("confmNo"));
+                    jsonObj.put("confmDe", data.getStringExtra("confmDe"));
+                    jsonObj.put("confmTime", data.getStringExtra("confmTime"));
+                    jsonObj.put("cardNo", data.getStringExtra("cardNo"));
+                    jsonObj.put("instlmtMonth", data.getStringExtra("instlmtMonth"));
+                    jsonObj.put("partnerNo", data.getStringExtra("partnerNo"));
+                    jsonObj.put("issuCmpnyCode", data.getStringExtra("issuCmpnyCode"));
+                    jsonObj.put("issuCmpnyNm", data.getStringExtra("issuCmpnyNm"));
+                    jsonObj.put("puchasCmpnyCode", data.getStringExtra("puchasCmpnyCode"));
+                    jsonObj.put("puchasCmpnyNm", data.getStringExtra("puchasCmpnyNm"));
+                    jsonObj.put("cardNm", data.getStringExtra("cardNm"));
+                    jsonObj.put("aditInfo", data.getStringExtra("aditInfo"));
+                    jsonObj.put("trmnlNo", data.getStringExtra("trmnlNo"));
+                    jsonObj.put("bizrno", data.getStringExtra("bizrno"));
+                    jsonObj.put("bplcNm", data.getStringExtra("bplcNm"));
+                    jsonObj.put("rprsntvNm", data.getStringExtra("rprsntvNm"));
+                    jsonObj.put("bplcAdres", data.getStringExtra("bplcAdres"));
+                    jsonObj.put("bplcTelno", data.getStringExtra("bplcTelno"));
+                    jsonObj.put("transAmntCny", data.getStringExtra("transAmntCny"));
+                    jsonObj.put("exchngRate", data.getStringExtra("exchngRate"));
+                    jsonObj.put("alipayTransId", data.getStringExtra("alipayTransId"));
+                    jsonObj.put("prtnrTransId", data.getStringExtra("prtnrTransId"));
+                    jsonObj.put("REFERENCE_NO", data.getStringExtra("REFERENCE_NO"));
+                    jsonObj.put("uscMuf", data.getStringExtra("uscMuf"));
+                    jsonObj.put("total", data.getStringExtra("total"));
+                    jsonObj.put("vat", data.getStringExtra("vat"));
+                    jsonObj.put("taxxpt", data.getStringExtra("taxxpt"));
+                    jsonObj.put("KakaoDiscount", data.getStringExtra("KakaoDiscount"));
+                    jsonObj.put("KakaoPayType", data.getStringExtra("KakaoPayType"));
+                    jsonObj.put("PaycoDiscount", data.getStringExtra("PaycoDiscount"));
+                    jsonObj.put("PaycoPayType", data.getStringExtra("PaycoPayType"));
+                    jsonObj.put("CupDeposit", data.getStringExtra("CupDeposit"));
+                    jsonObj.put("TagSeria", data.getStringExtra("TagSeria"));
 
                     mPromise.resolve(jsonObj);
                     mPromise = null;
 
                 }else if(resultCode == MSG_STATE_NG){
-                    Log.d("VPOS-D","dNNNNNNNNNNNNNNNNNNNNNNd");
+                    Log.d("fpispkpn-D","dNNNNNNNNNNNNNNNNNNNNNNd");
                     JSONObject jsonObj = new JSONObject();
                     
                     jsonObj.put("rtn_ServerMsg1", data.getStringExtra("rtn_ServerMsg1"));
