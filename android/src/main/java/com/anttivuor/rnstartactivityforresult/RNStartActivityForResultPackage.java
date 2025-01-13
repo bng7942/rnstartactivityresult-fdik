@@ -1,4 +1,4 @@
-package com.anttivuor.startactivityforresult;
+package com.anttivuor.startactivityforfdik;
 
 import android.app.Activity;
 
