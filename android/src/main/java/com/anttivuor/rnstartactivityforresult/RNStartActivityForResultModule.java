@@ -349,12 +349,12 @@ public class RNStartActivityForResultModule extends ReactContextBaseJavaModule {
             }
             } catch (JSONException e) {
                 e.printStackTrace();
-                JSONObject jsonObj = new JSONObject();
+                // JSONObject jsonObj = new JSONObject();
                     
-                jsonObj.put("rtn_ServerMsg1", "문제발생.. 직원에게 문의하세요.");
-                jsonObj.put("rtn_LEDCode", "6060");
+                // jsonObj.put("rtn_ServerMsg1", "문제발생.. 직원에게 문의하세요.");
+                // jsonObj.put("rtn_LEDCode", "6060");
 
-                mPromise.resolve(jsonObj);
+                mPromise.resolve({ rtn_ServerMsg1: "문제발생.. 직원에게 문의하세요.", rtn_LEDCode: "6060" });
                 mPromise = null;
             }
         }
