@@ -1,5 +1,5 @@
 
-declare type startActivityForResult = (
+declare type startActivityForFdik = (
     key:String, 
     uri:String, 
     action:String, 
@@ -27,4 +27,4 @@ declare type startActivityForResult = (
     cupDeposit:String
 ) => void
 
-export = startActivityForResult
+export = startActivityForFdik

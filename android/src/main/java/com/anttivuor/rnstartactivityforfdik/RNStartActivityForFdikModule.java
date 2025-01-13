@@ -1,4 +1,4 @@
-package com.bng7942.startactivityforresult;
+package com.anttivuor.startactivityforfdik;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -34,7 +34,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import android.util.Log;
 
-public class RNStartActivityForResultModule extends ReactContextBaseJavaModule {
+public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule {
     private static final String ERROR = "ERROR";
     private static final String ACTIVITY_DOES_NOT_EXIST = "ACTIVITY_DOES_NOT_EXIST";
     private static final int ACTIVITY_REQUEST_CODE = 4;
@@ -47,7 +47,7 @@ public class RNStartActivityForResultModule extends ReactContextBaseJavaModule {
 
     private ReactApplicationContext reactContext;
 
-    public RNStartActivityForResultModule(ReactApplicationContext reactContext) {
+    public RNStartActivityForFdikModule(ReactApplicationContext reactContext) {
         super(reactContext);
         this.reactContext = reactContext;
         this.reactContext.addActivityEventListener(mActivityEventListener);
@@ -55,7 +55,7 @@ public class RNStartActivityForResultModule extends ReactContextBaseJavaModule {
 
     @Override
     public String getName() {
-        return "RNStartActivityForResult";
+        return "RNStartActivityForFdik";
     }
 
     @Override
@@ -73,7 +73,7 @@ public class RNStartActivityForResultModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void startActivityForResult(String key, String uri, String action, 
+    public void startActivityForFdik(String key, String uri, String action, 
         String cardCashSe, String delngSe, String total, 
         String vat, String taxxpt, String instlmtMonth, String callbackAppUr, 
         String aditInfo, String srcConfmNo, String srcConfmDe, String barcodeNum,
@@ -121,7 +121,7 @@ public class RNStartActivityForResultModule extends ReactContextBaseJavaModule {
 
             returnKey = key;
 
-            currentActivity.startActivityForResult(intent, ACTIVITY_REQUEST_CODE);
+            currentActivity.startActivityForFdik(intent, ACTIVITY_REQUEST_CODE);
         } catch (Exception e) {
             // JSONObject jsonObj = new JSONObject();
                     

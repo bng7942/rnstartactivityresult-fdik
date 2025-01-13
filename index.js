@@ -1,18 +1,18 @@
 /**
- * @providesModule RNStartActivityForResult
+ * @providesModule RNStartActivityForFdik
  */
 
 import { NativeModules } from "react-native";
-var RNStartActivityForResult = NativeModules.RNStartActivityForResult || {};
+var RNStartActivityForFdik = NativeModules.RNStartActivityForFdik || {};
 
-var startActivityForResult = (
+var startActivityForFdik = (
     key, uri, action, cardCashSe, delngSe, total, 
     vat, taxxpt, instlmtMonth, callbackAppUr, 
     aditInfo, srcConfmNo, srcConfmDe, barcodeNum,
     cashNum, trmnlno, prdctNo, bizNo, uscMuf, REFERENCE_NO,
     KakaoDiscount, KakaoPayType, PaycoDiscount, PaycoPayType, cupDeposit) => {
     
-    return RNStartActivityForResult.startActivityForResult(
+    return RNStartActivityForFdik.startActivityForFdik(
         key, uri, action, cardCashSe, delngSe, total, vat, taxxpt, 
         instlmtMonth, callbackAppUr, aditInfo, srcConfmNo, srcConfmDe, barcodeNum,
         cashNum, trmnlno, prdctNo, bizNo, uscMuf, REFERENCE_NO,
@@ -20,4 +20,4 @@ var startActivityForResult = (
     );
 };
 
-export default startActivityForResult;
+export default startActivityForFdik;
