@@ -54,25 +54,6 @@ public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Log.e("MainActivity","onCreate=====");
-    }
-
-    @Override
-    public void onNewIntent(Intent intent) {
-        super.onNewIntent(intent);
-        Log.e("MainActivity","onNewIntent=====");
-        setIntent(intent);
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        Log.e("MainActivity","onDestroy=====");
-    }
-
-    @Override
     public String getName() {
         return "RNStartActivityForFdik";
     }
