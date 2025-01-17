@@ -103,21 +103,21 @@ public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule {
             intent.putExtra("taxxpt", taxxpt);
             intent.putExtra("instlmtMonth", instlmtMonth);
             intent.putExtra("callbackAppUr", callbackAppUr);
-            intent.putExtra("aditInfo", aditInfo);
+            // intent.putExtra("aditInfo", aditInfo);
             intent.putExtra("srcConfmNo", srcConfmNo);
             intent.putExtra("srcConfmDe", srcConfmDe);
-            intent.putExtra("barcodeNum", barcodeNum);
+            // intent.putExtra("barcodeNum", barcodeNum);
             intent.putExtra("cashNum", cashNum);
             intent.putExtra("trmnlno", trmnlno);
             intent.putExtra("prdctNo", prdctNo);
             intent.putExtra("bizNo", bizNo);
-            intent.putExtra("uscMuf", uscMuf);
+            // intent.putExtra("uscMuf", uscMuf);
             intent.putExtra("REFERENCE_NO", REFERENCE_NO);
-            intent.putExtra("KakaoDiscount", KakaoDiscount);
-            intent.putExtra("KakaoPayType", KakaoPayType);
-            intent.putExtra("PaycoDiscount", PaycoDiscount);
-            intent.putExtra("PaycoPayType", PaycoPayType);
-            intent.putExtra("cupDeposit", cupDeposit);            
+            // intent.putExtra("KakaoDiscount", KakaoDiscount);
+            // intent.putExtra("KakaoPayType", KakaoPayType);
+            // intent.putExtra("PaycoDiscount", PaycoDiscount);
+            // intent.putExtra("PaycoPayType", PaycoPayType);
+            // intent.putExtra("cupDeposit", cupDeposit);            
 
             returnKey = key;
 
