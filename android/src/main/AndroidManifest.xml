@@ -7,8 +7,7 @@
             android:exported="true"
         />
         <activity
-            android:name=".MainActivity"
-            android:launchMode="singleInstance"
+            android:name=".RNStartActivityForFdikModule"
             android:exported="true">
             <intent-filter>
                 <!-- TODO 호출 받기 위해 필요 Start-->
