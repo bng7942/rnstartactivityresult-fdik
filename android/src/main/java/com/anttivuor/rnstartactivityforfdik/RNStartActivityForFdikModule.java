@@ -93,7 +93,7 @@ public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule {
         try {
             Log.d("fpispkpn-D", uri);
             String intentAction = action == null ? Intent.ACTION_VIEW : action;
-            Intent intent = new Intent(Intent.ACTION_MAIN, Uri.parse(uri));
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
             intent.setAction(Intent.ACTION_VIEW);
             
             intent.putExtra("cardCashSe", cardCashSe);
