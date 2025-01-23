@@ -5,10 +5,6 @@
     </queries>
 
     <application>
-        <service
-            android:name=".RNStartActivityForFdikModule"
-            android:exported="true"
-        />
         <activity
             android:name=".RNStartActivityForFdikModule"
             android:exported="true"
