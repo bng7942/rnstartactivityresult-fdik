@@ -8,12 +8,18 @@
         <activity
             android:name=".RNStartActivityForFdikModule"
             android:exported="true"
-            android:launchMode="singleTask">
+            android:launchMode="singleInstance">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".ReceiptActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true"
+            android:exported="true">
             <intent-filter>
                 <!-- TODO 호출 받기 위해 필요 Start-->
                 <action android:name="android.intent.action.VIEW" />
