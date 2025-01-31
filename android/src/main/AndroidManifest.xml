@@ -1,8 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.anttivuor.startactivityforfdik">
-    <queries>
-        <package android:name="com.kpn.win4pos" />
-    </queries>
+    package="com.anttivuor.startactivityforfdik">
 
     <application>
         <activity
