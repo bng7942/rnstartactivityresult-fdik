@@ -1,8 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+          package="com.anttivuor.startactivityforfdik">
 
     <application>
+        <service
+            android:name=".RNStartActivityForFdikModule"
+            android:exported="true"
+        />
         <activity
             android:name=".RNStartActivityForFdikModule"
             android:exported="true"
@@ -11,22 +14,6 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".RNReceiptActivity"
-            android:launchMode="singleTask"
-            android:noHistory="true"
-            android:exported="true">
-            <intent-filter>
-                <!-- TODO 호출 받기 위해 필요 Start-->
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <data
-                    android:host="fdik"
-                    android:scheme="eospos" />
-                <!-- TODO 호출 받기 위해 필요 End-->
             </intent-filter>
         </activity>
     </application>
