@@ -15,7 +15,7 @@ public class RNStartActivityForFdikPackage implements ReactPackage {
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
         List<NativeModule> modules = new ArrayList<>();
-        modules.add(new RNStartActivityForFdikModule(reactContext));
+        modules.add(new RNStartActivityForResultModule(reactContext));
         return modules;
     }
 

@@ -12,13 +12,13 @@
       "react-native",
       "react-component",
       "intent",
-      "startActivityForFdik",
+      "startActivityForResult",
       "android"
     ],
     "author": "Antti Vuorenmaa <anttivuor@gmail.com>",
     "license": "MIT",
-    "repository": "https://github.com/anttivuor/react-native-start-activity-for-fdik",
-    "bugs": "https://github.com/anttivuor/react-native-start-activity-for-fdik/issues",
+    "repository": "https://github.com/anttivuor/react-native-start-activity-for-result",
+    "bugs": "https://github.com/anttivuor/react-native-start-activity-for-result/issues",
     "peerDependencies": {
       "react-native": "*"
     }
