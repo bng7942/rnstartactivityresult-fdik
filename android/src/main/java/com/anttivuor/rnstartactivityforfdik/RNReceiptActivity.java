@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.UnsupportedEncodingException;
 
-public class ReceiptActivity extends AppCompatActivity {
+public class RNReceiptActivity extends AppCompatActivity {
 
     // TextView txt_receipt;
     Uri callbackData = null;

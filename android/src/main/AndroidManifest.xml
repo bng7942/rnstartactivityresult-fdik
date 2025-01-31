@@ -14,7 +14,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ReceiptActivity"
+            android:name=".RNReceiptActivity"
             android:launchMode="singleTask"
             android:noHistory="true"
             android:exported="true">
