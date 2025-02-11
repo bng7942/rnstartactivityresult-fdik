@@ -50,7 +50,7 @@ public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule {
     public RNStartActivityForFdikModule(ReactApplicationContext reactContext) {
         super(reactContext);
         this.reactContext = reactContext;
-        this.reactContext.addActivityEventListener(mActivityEventListener);
+        // this.reactContext.addActivityEventListener(mActivityEventListener);
     }
 
     @Override
