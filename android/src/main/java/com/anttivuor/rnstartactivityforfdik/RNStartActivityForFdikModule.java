@@ -81,12 +81,11 @@ public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule {
         String REFERENCE_NO, String KakaoDiscount, String KakaoPayType, String PaycoDiscount, 
         String PaycoPayType, String cupDeposit, Promise promise) {
 
-        // Activity currentActivity = getCurrentActivity();
+        Activity currentActivity = getCurrentActivity();
 
-        // if (currentActivity == null) {
-        //     promise.reject(ACTIVITY_DOES_NOT_EXIST, "Activity doesn't exist");
-        //     return;
-        // }
+        if (currentActivity == null) {
+            return;
+        }
 
         // mPromise = promise;
 
@@ -140,7 +139,7 @@ public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule {
             // // intent.putExtra("cupDeposit", cupDeposit);            
 
             returnKey = key;
-            startActivity(intent);
+            currentActivity.startActivity(intent);
 
             // currentActivity.startActivityForResult(intent, ACTIVITY_REQUEST_CODE);
         } catch (Exception e) {
