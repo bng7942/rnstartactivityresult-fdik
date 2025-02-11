@@ -314,7 +314,7 @@ public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule {
             // }
 
             try {
-                mPromise.resolve(requestCode.toString());
+                mPromise.resolve(requestCode);
                 mPromise = null;
                 // if (requestCode == MSG_REQUEST_OUTSIDEAPPR) {
                 // if (resultCode == MSG_STATE_OK) {
