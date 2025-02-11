@@ -4,12 +4,6 @@
     <application>
         <service
             android:name=".RNStartActivityForFdikModule"
-            android:exported="true"
-        />
-        <activity
-            android:name=".RNStartActivityForFdikModule"
-            android:launchMode="singleTask"
-            android:noHistory="true"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,6 +19,7 @@
                     android:scheme="eospos" />
                 <!-- TODO 호출 받기 위해 필요 End-->
             </intent-filter>
-        </activity>
+        </service>
+
     </application>
 </manifest>
