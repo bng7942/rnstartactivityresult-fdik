@@ -112,9 +112,9 @@ public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule {
             }
             
             String url = builder.toString();
-            
+            Log.e("urlLog",url);
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-            intent.setAction(Intent.ACTION_VIEW);
+            // intent.setAction(Intent.ACTION_VIEW);
 
             // intent.putExtra("cardCashSe", cardCashSe);
             // intent.putExtra("delngSe", delngSe);
