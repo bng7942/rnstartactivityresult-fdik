@@ -42,8 +42,9 @@ public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule {
     public static final int MSG_STATE_OK = 1;
     public static final int MSG_STATE_NG = 2;
     private String returnKey = "";
+    private Uri callbackData = null;
 
-    // private Promise mPromise;
+    private Promise mPromise;
 
     private ReactApplicationContext reactContext;
 
@@ -51,6 +52,23 @@ public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule {
         super(reactContext);
         this.reactContext = reactContext;
         // this.reactContext.addActivityEventListener(mActivityEventListener);
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        CallbackDataProcess();
+    }
+
+    public void CallbackDataProcess(){
+        if(null != getIntent()){
+
+            if(null != getIntent().getData()){
+                callbackData = getIntent().getData();
+                mPromise.resolve(callbackData.toString());
+                mPromise = null;
+            }
+        }
     }
 
     @Override
@@ -87,7 +105,7 @@ public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule {
             return;
         }
 
-        // mPromise = promise;
+        mPromise = promise;
 
         try {
             String callScheme = "fpispkpn://default";
@@ -150,8 +168,8 @@ public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule {
 
             // mPromise.resolve(jsonObj);
             e.printStackTrace();
-            // mPromise.reject(ERROR, e);
-            // mPromise = null;
+            mPromise.reject(ERROR, e);
+            mPromise = null;
         }
     }
 
