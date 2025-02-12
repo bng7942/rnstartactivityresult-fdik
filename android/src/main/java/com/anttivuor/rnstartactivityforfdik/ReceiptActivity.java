@@ -10,7 +10,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import javax.swing.JOptionPane;
 
 import androidx.appcompat.app.AppCompatActivity;
 
