@@ -1,5 +1,6 @@
 package com.anttivuor.startactivityforfdik;
 
+import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
@@ -62,8 +63,11 @@ public class ReceiptActivity extends AppCompatActivity {
                 callbackData = getIntent().getData();
                 Intent intent = new Intent(this, RNStartActivityForFdikModule.class);
                 intent.putExtra("callbackData", callbackData.toString());
-                startActivity(intent);
-                // finish();
+                Activity currentActivity = getCurrentActivity();
+                currentActivity.startActivityForResult(intent, 2);
+
+                // startActivity(intent);
+                finish();
             }
         }
     }
