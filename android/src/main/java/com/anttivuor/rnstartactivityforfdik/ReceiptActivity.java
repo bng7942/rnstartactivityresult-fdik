@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import javax.swing.JOptionPane;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -60,9 +61,9 @@ public class ReceiptActivity extends AppCompatActivity {
 
             if(null != getIntent().getData()){
                 callbackData = getIntent().getData();
-                out.println("<script> alert('CallbackDataProcess: ${callbackData.toString()}');");
-                out.println("history.go(-1); </script>"); 
-                out.close();
+                Intent intent = new Intent(this, RNStartActivityForFdikModule.class);
+                intent.putExtra("callbackData", callbackData.toString());
+                startActivity(intent);
                 finish();
             }
         }
