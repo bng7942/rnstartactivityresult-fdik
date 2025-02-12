@@ -399,13 +399,6 @@ public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule {
                 mPromise.reject(e);
                 mPromise = null;
             }
-        }
-
-        @Override
-        protected void onNewIntent(Intent intent) {
-            super.onNewIntent(intent);
-            setIntent(intent);
-            CallbackDataProcess();
-        }
+        }        
     };
 }
