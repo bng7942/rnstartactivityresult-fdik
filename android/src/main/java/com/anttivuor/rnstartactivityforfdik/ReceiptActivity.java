@@ -29,33 +29,6 @@ public class ReceiptActivity extends AppCompatActivity {
         CallbackDataProcess();
     }
 
-    @Override
-    protected void onNewIntent(Intent intent) {
-        super.onNewIntent(intent);
-        CallbackDataProcess();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if(null != callbackData){
-            callbackData = null;
-        }
-        if(null != getIntent()){
-            if(null != getIntent().getData()) getIntent().setData(null);
-        }else {
-            if(null != getParent().getIntent()){
-                if(null != getParent().getIntent().getData()) getParent().getIntent().setData(null);
-            }
-        }
-    }
-
-
     public void CallbackDataProcess(){
         if(null != getIntent()){
 
@@ -63,8 +36,8 @@ public class ReceiptActivity extends AppCompatActivity {
                 callbackData = getIntent().getData();
                 Intent intent = new Intent(this, RNStartActivityForFdikModule.class);
                 intent.putExtra("callbackData", callbackData.toString());
+                setResult(Activity.RESULT_OK, intent);
 
-                startActivity(intent);
                 finish();
             }
         }

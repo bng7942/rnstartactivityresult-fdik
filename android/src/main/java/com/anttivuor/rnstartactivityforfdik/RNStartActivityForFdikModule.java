@@ -16,6 +16,7 @@ import java.util.Map;
 import com.facebook.react.bridge.ActivityEventListener;
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.BaseActivityEventListener;
+import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -60,16 +61,16 @@ public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule {
     //     CallbackDataProcess();
     // }
 
-    public void CallbackDataProcess(){
-        if(null != getIntent()){
+    // public void CallbackDataProcess(){
+    //     if(null != getIntent()){
 
-            if(null != getIntent().getData()){
-                callbackData = getIntent().getData();
-                mPromise.resolve(callbackData.toString());
-                mPromise = null;
-            }
-        }
-    }
+    //         if(null != getIntent().getData()){
+    //             callbackData = getIntent().getData();
+    //             mPromise.resolve(callbackData.toString());
+    //             mPromise = null;
+    //         }
+    //     }
+    // }
 
     @Override
     public String getName() {
