@@ -60,16 +60,16 @@ public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule {
     //     CallbackDataProcess();
     // }
 
-    // public void CallbackDataProcess(){
-    //     if(null != getIntent()){
+    public void CallbackDataProcess(){
+        if(null != getIntent()){
 
-    //         if(null != getIntent().getData()){
-    //             callbackData = getIntent().getData();
-    //             mPromise.resolve(callbackData.toString());
-    //             mPromise = null;
-    //         }
-    //     }
-    // }
+            if(null != getIntent().getData()){
+                callbackData = getIntent().getData();
+                mPromise.resolve(callbackData.toString());
+                mPromise = null;
+            }
+        }
+    }
 
     @Override
     public String getName() {
@@ -398,6 +398,13 @@ public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule {
                 mPromise.reject(e);
                 mPromise = null;
             }
+        }
+
+        @Override
+        protected void onNewIntent(Intent intent) {
+            super.onNewIntent(intent);
+            setIntent(intent);
+            CallbackDataProcess();
         }
     };
 }
