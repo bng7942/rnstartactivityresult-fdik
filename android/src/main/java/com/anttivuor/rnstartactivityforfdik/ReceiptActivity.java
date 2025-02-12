@@ -63,7 +63,7 @@ public class ReceiptActivity extends AppCompatActivity {
                 Intent intent = new Intent(this, RNStartActivityForFdikModule.class);
                 intent.putExtra("callbackData", callbackData.toString());
                 startActivity(intent);
-                finish();
+                // finish();
             }
         }
     }
