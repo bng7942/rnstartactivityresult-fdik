@@ -141,6 +141,8 @@ public class ReceiptActivity extends AppCompatActivity {
             if(null != callbackData.getQueryParameter("errorType")){
                 strResult.append("errorType : " + callbackData.getQueryParameter("errorType") + "\n");
             }
+        }else {
+            strResult.append("setleMessage : "  + callbackData.getQueryParameter("setleMessage") + "\n");
         }
         return strResult.toString();
     }

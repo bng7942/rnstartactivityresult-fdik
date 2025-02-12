@@ -35,7 +35,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import android.util.Log;
 
-public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule {
+public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule implements ActivityEventListener{
     private static final String ERROR = "ERROR";
     private static final String ACTIVITY_DOES_NOT_EXIST = "ACTIVITY_DOES_NOT_EXIST";
     private static final int ACTIVITY_REQUEST_CODE = 4;
@@ -52,25 +52,25 @@ public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule {
     public RNStartActivityForFdikModule(ReactApplicationContext reactContext) {
         super(reactContext);
         this.reactContext = reactContext;
-        this.reactContext.addActivityEventListener(mActivityEventListener);
+        // this.reactContext.addActivityEventListener(mActivityEventListener);
     }
 
-    // @Override
-    // protected void onNewIntent(Intent intent) {
-    //     super.onNewIntent(intent);
-    //     CallbackDataProcess();
-    // }
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        CallbackDataProcess();
+    }
 
-    // public void CallbackDataProcess(){
-    //     if(null != getIntent()){
+    public void CallbackDataProcess(){
+        if(null != getIntent()){
 
-    //         if(null != getIntent().getData()){
-    //             callbackData = getIntent().getData();
-    //             mPromise.resolve(callbackData.toString());
-    //             mPromise = null;
-    //         }
-    //     }
-    // }
+            if(null != getIntent().getData()){
+                callbackData = getIntent().getData();
+                mPromise.resolve(callbackData.toString());
+                mPromise = null;
+            }
+        }
+    }
 
     @Override
     public String getName() {
@@ -236,169 +236,169 @@ public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule {
         return map;
     }
 
-    private final ActivityEventListener mActivityEventListener = new BaseActivityEventListener() {
-        @Override
-        public void onActivityResult(Activity activity, int requestCode, int resultCode, Intent data) {
+    // private final ActivityEventListener mActivityEventListener = new BaseActivityEventListener() {
+    //     @Override
+    //     public void onActivityResult(Activity activity, int requestCode, int resultCode, Intent data) {
             
-            // Uri callbackData = null;
-            // if (requestCode == MSG_REQUEST_OUTSIDEAPPR) {
-            //     if (resultCode == MSG_STATE_OK) {
-            //         Log.d("fpispkpn-D","dKKKKKKKKKKKKKKKKKKdd");
-            //         JSONObject jsonObj = new JSONObject();
+    //         // Uri callbackData = null;
+    //         // if (requestCode == MSG_REQUEST_OUTSIDEAPPR) {
+    //         //     if (resultCode == MSG_STATE_OK) {
+    //         //         Log.d("fpispkpn-D","dKKKKKKKKKKKKKKKKKKdd");
+    //         //         JSONObject jsonObj = new JSONObject();
 
-            //         jsonObj.put("cardCashSe", data.getStringExtra("cardCashSe"));
-            //         jsonObj.put("delngSe", data.getStringExtra("delngSe"));
-            //         jsonObj.put("setleSuccesAt", data.getStringExtra("setleSuccesAt"));
-            //         jsonObj.put("setleMessage", data.getStringExtra("setleMessage"));
-            //         jsonObj.put("confmNo", data.getStringExtra("confmNo"));
-            //         jsonObj.put("confmDe", data.getStringExtra("confmDe"));
-            //         jsonObj.put("confmTime", data.getStringExtra("confmTime"));
-            //         jsonObj.put("cardNo", data.getStringExtra("cardNo"));
-            //         jsonObj.put("instlmtMonth", data.getStringExtra("instlmtMonth"));
-            //         jsonObj.put("partnerNo", data.getStringExtra("partnerNo"));
-            //         jsonObj.put("issuCmpnyCode", data.getStringExtra("issuCmpnyCode"));
-            //         jsonObj.put("issuCmpnyNm", data.getStringExtra("issuCmpnyNm"));
-            //         jsonObj.put("puchasCmpnyCode", data.getStringExtra("puchasCmpnyCode"));
-            //         jsonObj.put("puchasCmpnyNm", data.getStringExtra("puchasCmpnyNm"));
-            //         jsonObj.put("cardNm", data.getStringExtra("cardNm"));
-            //         jsonObj.put("aditInfo", data.getStringExtra("aditInfo"));
-            //         jsonObj.put("trmnlNo", data.getStringExtra("trmnlNo"));
-            //         jsonObj.put("bizrno", data.getStringExtra("bizrno"));
-            //         jsonObj.put("bplcNm", data.getStringExtra("bplcNm"));
-            //         jsonObj.put("rprsntvNm", data.getStringExtra("rprsntvNm"));
-            //         jsonObj.put("bplcAdres", data.getStringExtra("bplcAdres"));
-            //         jsonObj.put("bplcTelno", data.getStringExtra("bplcTelno"));
-            //         jsonObj.put("transAmntCny", data.getStringExtra("transAmntCny"));
-            //         jsonObj.put("exchngRate", data.getStringExtra("exchngRate"));
-            //         jsonObj.put("alipayTransId", data.getStringExtra("alipayTransId"));
-            //         jsonObj.put("prtnrTransId", data.getStringExtra("prtnrTransId"));
-            //         jsonObj.put("REFERENCE_NO", data.getStringExtra("REFERENCE_NO"));
-            //         jsonObj.put("uscMuf", data.getStringExtra("uscMuf"));
-            //         jsonObj.put("total", data.getStringExtra("total"));
-            //         jsonObj.put("vat", data.getStringExtra("vat"));
-            //         jsonObj.put("taxxpt", data.getStringExtra("taxxpt"));
-            //         jsonObj.put("KakaoDiscount", data.getStringExtra("KakaoDiscount"));
-            //         jsonObj.put("KakaoPayType", data.getStringExtra("KakaoPayType"));
-            //         jsonObj.put("PaycoDiscount", data.getStringExtra("PaycoDiscount"));
-            //         jsonObj.put("PaycoPayType", data.getStringExtra("PaycoPayType"));
-            //         jsonObj.put("CupDeposit", data.getStringExtra("CupDeposit"));
-            //         jsonObj.put("TagSeria", data.getStringExtra("TagSeria"));
+    //         //         jsonObj.put("cardCashSe", data.getStringExtra("cardCashSe"));
+    //         //         jsonObj.put("delngSe", data.getStringExtra("delngSe"));
+    //         //         jsonObj.put("setleSuccesAt", data.getStringExtra("setleSuccesAt"));
+    //         //         jsonObj.put("setleMessage", data.getStringExtra("setleMessage"));
+    //         //         jsonObj.put("confmNo", data.getStringExtra("confmNo"));
+    //         //         jsonObj.put("confmDe", data.getStringExtra("confmDe"));
+    //         //         jsonObj.put("confmTime", data.getStringExtra("confmTime"));
+    //         //         jsonObj.put("cardNo", data.getStringExtra("cardNo"));
+    //         //         jsonObj.put("instlmtMonth", data.getStringExtra("instlmtMonth"));
+    //         //         jsonObj.put("partnerNo", data.getStringExtra("partnerNo"));
+    //         //         jsonObj.put("issuCmpnyCode", data.getStringExtra("issuCmpnyCode"));
+    //         //         jsonObj.put("issuCmpnyNm", data.getStringExtra("issuCmpnyNm"));
+    //         //         jsonObj.put("puchasCmpnyCode", data.getStringExtra("puchasCmpnyCode"));
+    //         //         jsonObj.put("puchasCmpnyNm", data.getStringExtra("puchasCmpnyNm"));
+    //         //         jsonObj.put("cardNm", data.getStringExtra("cardNm"));
+    //         //         jsonObj.put("aditInfo", data.getStringExtra("aditInfo"));
+    //         //         jsonObj.put("trmnlNo", data.getStringExtra("trmnlNo"));
+    //         //         jsonObj.put("bizrno", data.getStringExtra("bizrno"));
+    //         //         jsonObj.put("bplcNm", data.getStringExtra("bplcNm"));
+    //         //         jsonObj.put("rprsntvNm", data.getStringExtra("rprsntvNm"));
+    //         //         jsonObj.put("bplcAdres", data.getStringExtra("bplcAdres"));
+    //         //         jsonObj.put("bplcTelno", data.getStringExtra("bplcTelno"));
+    //         //         jsonObj.put("transAmntCny", data.getStringExtra("transAmntCny"));
+    //         //         jsonObj.put("exchngRate", data.getStringExtra("exchngRate"));
+    //         //         jsonObj.put("alipayTransId", data.getStringExtra("alipayTransId"));
+    //         //         jsonObj.put("prtnrTransId", data.getStringExtra("prtnrTransId"));
+    //         //         jsonObj.put("REFERENCE_NO", data.getStringExtra("REFERENCE_NO"));
+    //         //         jsonObj.put("uscMuf", data.getStringExtra("uscMuf"));
+    //         //         jsonObj.put("total", data.getStringExtra("total"));
+    //         //         jsonObj.put("vat", data.getStringExtra("vat"));
+    //         //         jsonObj.put("taxxpt", data.getStringExtra("taxxpt"));
+    //         //         jsonObj.put("KakaoDiscount", data.getStringExtra("KakaoDiscount"));
+    //         //         jsonObj.put("KakaoPayType", data.getStringExtra("KakaoPayType"));
+    //         //         jsonObj.put("PaycoDiscount", data.getStringExtra("PaycoDiscount"));
+    //         //         jsonObj.put("PaycoPayType", data.getStringExtra("PaycoPayType"));
+    //         //         jsonObj.put("CupDeposit", data.getStringExtra("CupDeposit"));
+    //         //         jsonObj.put("TagSeria", data.getStringExtra("TagSeria"));
 
-            //         mPromise.resolve(jsonObj);
-            //         mPromise = null;
+    //         //         mPromise.resolve(jsonObj);
+    //         //         mPromise = null;
 
-            //     }else if(resultCode == MSG_STATE_NG){
-            //         Log.d("fpispkpn-D","dNNNNNNNNNNNNNNNNNNNNNNd");
-            //         JSONObject jsonObj = new JSONObject();
+    //         //     }else if(resultCode == MSG_STATE_NG){
+    //         //         Log.d("fpispkpn-D","dNNNNNNNNNNNNNNNNNNNNNNd");
+    //         //         JSONObject jsonObj = new JSONObject();
                     
-            //         jsonObj.put("rtn_ServerMsg1", data.getStringExtra("rtn_ServerMsg1"));
-            //         jsonObj.put("rtn_LEDCode", data.getStringExtra("rtn_LEDCode"));
+    //         //         jsonObj.put("rtn_ServerMsg1", data.getStringExtra("rtn_ServerMsg1"));
+    //         //         jsonObj.put("rtn_LEDCode", data.getStringExtra("rtn_LEDCode"));
 
-            //         // String errMSG = data.getStringExtra("rtn_ServerMsg1");
-            //         // String errCODE = data.getStringExtra("rtn_LEDCode");
-            //         // String Msgebuf = "[" + errCODE + "] : " + errMSG;
-            //         // Toast.makeText(this, Msgebuf, Toast.LENGTH_SHORT).show();
+    //         //         // String errMSG = data.getStringExtra("rtn_ServerMsg1");
+    //         //         // String errCODE = data.getStringExtra("rtn_LEDCode");
+    //         //         // String Msgebuf = "[" + errCODE + "] : " + errMSG;
+    //         //         // Toast.makeText(this, Msgebuf, Toast.LENGTH_SHORT).show();
                     
-            //         mPromise.resolve(jsonObj);
-            //         mPromise = null;
+    //         //         mPromise.resolve(jsonObj);
+    //         //         mPromise = null;
 
-            //     }else{
-            //         //Log.d(TAG,"resultCode = "+ resultCode);
-            //         JSONObject jsonObj = new JSONObject();
+    //         //     }else{
+    //         //         //Log.d(TAG,"resultCode = "+ resultCode);
+    //         //         JSONObject jsonObj = new JSONObject();
                     
-            //         jsonObj.put("rtn_ServerMsg1", "문제발생.. 직원에게 문의하세요.");
-            //         jsonObj.put("rtn_LEDCode", "6060");
+    //         //         jsonObj.put("rtn_ServerMsg1", "문제발생.. 직원에게 문의하세요.");
+    //         //         jsonObj.put("rtn_LEDCode", "6060");
 
-            //         mPromise.resolve(jsonObj);
-            //         mPromise = null;
-            //     }
-            // }
+    //         //         mPromise.resolve(jsonObj);
+    //         //         mPromise = null;
+    //         //     }
+    //         // }
 
-            try {
-                mPromise.resolve(data);
-                mPromise = null;
-                // if (requestCode == MSG_REQUEST_OUTSIDEAPPR) {
-                // if (resultCode == MSG_STATE_OK) {
-                //     Log.d("fpispkpn-D","dKKKKKKKKKKKKKKKKKKdd");
-                //     // JSONObject jsonObj = new JSONObject();
+    //         try {
+    //             mPromise.resolve(data);
+    //             mPromise = null;
+    //             // if (requestCode == MSG_REQUEST_OUTSIDEAPPR) {
+    //             // if (resultCode == MSG_STATE_OK) {
+    //             //     Log.d("fpispkpn-D","dKKKKKKKKKKKKKKKKKKdd");
+    //             //     // JSONObject jsonObj = new JSONObject();
 
-                //     // jsonObj.put("cardCashSe", data.getStringExtra("cardCashSe"));
-                //     // jsonObj.put("delngSe", data.getStringExtra("delngSe"));
-                //     // jsonObj.put("setleSuccesAt", data.getStringExtra("setleSuccesAt"));
-                //     // jsonObj.put("setleMessage", data.getStringExtra("setleMessage"));
-                //     // jsonObj.put("confmNo", data.getStringExtra("confmNo"));
-                //     // jsonObj.put("confmDe", data.getStringExtra("confmDe"));
-                //     // jsonObj.put("confmTime", data.getStringExtra("confmTime"));
-                //     // jsonObj.put("cardNo", data.getStringExtra("cardNo"));
-                //     // jsonObj.put("instlmtMonth", data.getStringExtra("instlmtMonth"));
-                //     // jsonObj.put("partnerNo", data.getStringExtra("partnerNo"));
-                //     // jsonObj.put("issuCmpnyCode", data.getStringExtra("issuCmpnyCode"));
-                //     // jsonObj.put("issuCmpnyNm", data.getStringExtra("issuCmpnyNm"));
-                //     // jsonObj.put("puchasCmpnyCode", data.getStringExtra("puchasCmpnyCode"));
-                //     // jsonObj.put("puchasCmpnyNm", data.getStringExtra("puchasCmpnyNm"));
-                //     // jsonObj.put("cardNm", data.getStringExtra("cardNm"));
-                //     // jsonObj.put("aditInfo", data.getStringExtra("aditInfo"));
-                //     // jsonObj.put("trmnlNo", data.getStringExtra("trmnlNo"));
-                //     // jsonObj.put("bizrno", data.getStringExtra("bizrno"));
-                //     // jsonObj.put("bplcNm", data.getStringExtra("bplcNm"));
-                //     // jsonObj.put("rprsntvNm", data.getStringExtra("rprsntvNm"));
-                //     // jsonObj.put("bplcAdres", data.getStringExtra("bplcAdres"));
-                //     // jsonObj.put("bplcTelno", data.getStringExtra("bplcTelno"));
-                //     // jsonObj.put("transAmntCny", data.getStringExtra("transAmntCny"));
-                //     // jsonObj.put("exchngRate", data.getStringExtra("exchngRate"));
-                //     // jsonObj.put("alipayTransId", data.getStringExtra("alipayTransId"));
-                //     // jsonObj.put("prtnrTransId", data.getStringExtra("prtnrTransId"));
-                //     // jsonObj.put("REFERENCE_NO", data.getStringExtra("REFERENCE_NO"));
-                //     // jsonObj.put("uscMuf", data.getStringExtra("uscMuf"));
-                //     // jsonObj.put("total", data.getStringExtra("total"));
-                //     // jsonObj.put("vat", data.getStringExtra("vat"));
-                //     // jsonObj.put("taxxpt", data.getStringExtra("taxxpt"));
-                //     // jsonObj.put("KakaoDiscount", data.getStringExtra("KakaoDiscount"));
-                //     // jsonObj.put("KakaoPayType", data.getStringExtra("KakaoPayType"));
-                //     // jsonObj.put("PaycoDiscount", data.getStringExtra("PaycoDiscount"));
-                //     // jsonObj.put("PaycoPayType", data.getStringExtra("PaycoPayType"));
-                //     // jsonObj.put("CupDeposit", data.getStringExtra("CupDeposit"));
-                //     // jsonObj.put("TagSeria", data.getStringExtra("TagSeria"));
+    //             //     // jsonObj.put("cardCashSe", data.getStringExtra("cardCashSe"));
+    //             //     // jsonObj.put("delngSe", data.getStringExtra("delngSe"));
+    //             //     // jsonObj.put("setleSuccesAt", data.getStringExtra("setleSuccesAt"));
+    //             //     // jsonObj.put("setleMessage", data.getStringExtra("setleMessage"));
+    //             //     // jsonObj.put("confmNo", data.getStringExtra("confmNo"));
+    //             //     // jsonObj.put("confmDe", data.getStringExtra("confmDe"));
+    //             //     // jsonObj.put("confmTime", data.getStringExtra("confmTime"));
+    //             //     // jsonObj.put("cardNo", data.getStringExtra("cardNo"));
+    //             //     // jsonObj.put("instlmtMonth", data.getStringExtra("instlmtMonth"));
+    //             //     // jsonObj.put("partnerNo", data.getStringExtra("partnerNo"));
+    //             //     // jsonObj.put("issuCmpnyCode", data.getStringExtra("issuCmpnyCode"));
+    //             //     // jsonObj.put("issuCmpnyNm", data.getStringExtra("issuCmpnyNm"));
+    //             //     // jsonObj.put("puchasCmpnyCode", data.getStringExtra("puchasCmpnyCode"));
+    //             //     // jsonObj.put("puchasCmpnyNm", data.getStringExtra("puchasCmpnyNm"));
+    //             //     // jsonObj.put("cardNm", data.getStringExtra("cardNm"));
+    //             //     // jsonObj.put("aditInfo", data.getStringExtra("aditInfo"));
+    //             //     // jsonObj.put("trmnlNo", data.getStringExtra("trmnlNo"));
+    //             //     // jsonObj.put("bizrno", data.getStringExtra("bizrno"));
+    //             //     // jsonObj.put("bplcNm", data.getStringExtra("bplcNm"));
+    //             //     // jsonObj.put("rprsntvNm", data.getStringExtra("rprsntvNm"));
+    //             //     // jsonObj.put("bplcAdres", data.getStringExtra("bplcAdres"));
+    //             //     // jsonObj.put("bplcTelno", data.getStringExtra("bplcTelno"));
+    //             //     // jsonObj.put("transAmntCny", data.getStringExtra("transAmntCny"));
+    //             //     // jsonObj.put("exchngRate", data.getStringExtra("exchngRate"));
+    //             //     // jsonObj.put("alipayTransId", data.getStringExtra("alipayTransId"));
+    //             //     // jsonObj.put("prtnrTransId", data.getStringExtra("prtnrTransId"));
+    //             //     // jsonObj.put("REFERENCE_NO", data.getStringExtra("REFERENCE_NO"));
+    //             //     // jsonObj.put("uscMuf", data.getStringExtra("uscMuf"));
+    //             //     // jsonObj.put("total", data.getStringExtra("total"));
+    //             //     // jsonObj.put("vat", data.getStringExtra("vat"));
+    //             //     // jsonObj.put("taxxpt", data.getStringExtra("taxxpt"));
+    //             //     // jsonObj.put("KakaoDiscount", data.getStringExtra("KakaoDiscount"));
+    //             //     // jsonObj.put("KakaoPayType", data.getStringExtra("KakaoPayType"));
+    //             //     // jsonObj.put("PaycoDiscount", data.getStringExtra("PaycoDiscount"));
+    //             //     // jsonObj.put("PaycoPayType", data.getStringExtra("PaycoPayType"));
+    //             //     // jsonObj.put("CupDeposit", data.getStringExtra("CupDeposit"));
+    //             //     // jsonObj.put("TagSeria", data.getStringExtra("TagSeria"));
 
-                //     mPromise.resolve(data.toString());
-                //     mPromise = null;
+    //             //     mPromise.resolve(data.toString());
+    //             //     mPromise = null;
 
-                // }else if(resultCode == MSG_STATE_NG){
-                //     Log.d("fpispkpn-D","dNNNNNNNNNNNNNNNNNNNNNNd");
-                //     // JSONObject jsonObj = new JSONObject();
+    //             // }else if(resultCode == MSG_STATE_NG){
+    //             //     Log.d("fpispkpn-D","dNNNNNNNNNNNNNNNNNNNNNNd");
+    //             //     // JSONObject jsonObj = new JSONObject();
                     
-                //     // jsonObj.put("rtn_ServerMsg1", data.getStringExtra("rtn_ServerMsg1"));
-                //     // jsonObj.put("rtn_LEDCode", data.getStringExtra("rtn_LEDCode"));
+    //             //     // jsonObj.put("rtn_ServerMsg1", data.getStringExtra("rtn_ServerMsg1"));
+    //             //     // jsonObj.put("rtn_LEDCode", data.getStringExtra("rtn_LEDCode"));
 
-                //     // String errMSG = data.getStringExtra("rtn_ServerMsg1");
-                //     // String errCODE = data.getStringExtra("rtn_LEDCode");
-                //     // String Msgebuf = "[" + errCODE + "] : " + errMSG;
-                //     // Toast.makeText(this, Msgebuf, Toast.LENGTH_SHORT).show();
+    //             //     // String errMSG = data.getStringExtra("rtn_ServerMsg1");
+    //             //     // String errCODE = data.getStringExtra("rtn_LEDCode");
+    //             //     // String Msgebuf = "[" + errCODE + "] : " + errMSG;
+    //             //     // Toast.makeText(this, Msgebuf, Toast.LENGTH_SHORT).show();
                     
-                //     mPromise.resolve(data.toString());
-                //     mPromise = null;
+    //             //     mPromise.resolve(data.toString());
+    //             //     mPromise = null;
 
-                // }else{
-                //     //Log.d(TAG,"resultCode = "+ resultCode);
-                //     // JSONObject jsonObj = new JSONObject();
+    //             // }else{
+    //             //     //Log.d(TAG,"resultCode = "+ resultCode);
+    //             //     // JSONObject jsonObj = new JSONObject();
                     
-                //     // jsonObj.put("rtn_ServerMsg1", "문제발생.. 직원에게 문의하세요.");
-                //     // jsonObj.put("rtn_LEDCode", "6060");
+    //             //     // jsonObj.put("rtn_ServerMsg1", "문제발생.. 직원에게 문의하세요.");
+    //             //     // jsonObj.put("rtn_LEDCode", "6060");
 
-                //     mPromise.resolve(data.toString());
-                //     mPromise = null;
-                // }
-            // }
-            } catch (Exception e) {
-                e.printStackTrace();
-                // JSONObject jsonObj = new JSONObject();
+    //             //     mPromise.resolve(data.toString());
+    //             //     mPromise = null;
+    //             // }
+    //         // }
+    //         } catch (Exception e) {
+    //             e.printStackTrace();
+    //             // JSONObject jsonObj = new JSONObject();
                     
-                // jsonObj.put("rtn_ServerMsg1", "문제발생.. 직원에게 문의하세요.");
-                // jsonObj.put("rtn_LEDCode", "6060");
+    //             // jsonObj.put("rtn_ServerMsg1", "문제발생.. 직원에게 문의하세요.");
+    //             // jsonObj.put("rtn_LEDCode", "6060");
 
-                mPromise.reject(e);
-                mPromise = null;
-            }
-        }        
-    };
+    //             mPromise.reject(e);
+    //             mPromise = null;
+    //         }
+    //     }        
+    // };
 }
