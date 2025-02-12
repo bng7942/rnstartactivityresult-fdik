@@ -34,7 +34,7 @@ public class ReceiptActivity extends AppCompatActivity {
 
             if(null != getIntent().getData()){
                 callbackData = getIntent().getData();
-                Intent intent = new Intent(this, RNStartActivityForFdikModule.class);
+                Intent intent = new Intent();
                 intent.putExtra("callbackData", callbackData.toString());
                 setResult(Activity.RESULT_OK, intent);
 
