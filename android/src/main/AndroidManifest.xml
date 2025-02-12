@@ -2,8 +2,10 @@
           package="com.anttivuor.startactivityforfdik">
 
     <application>
-        <service
+        <activity
             android:name=".RNStartActivityForFdikModule"
+            android:launchMode="singleTask"
+            android:noHistory="true"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,7 +21,6 @@
                     android:scheme="eospos" />
                 <!-- TODO 호출 받기 위해 필요 End-->
             </intent-filter>
-        </service>
-
+        </activity>
     </application>
 </manifest>
