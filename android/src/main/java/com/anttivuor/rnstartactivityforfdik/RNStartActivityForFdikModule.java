@@ -120,7 +120,7 @@ public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule imp
             return;
         }
 
-        // mPromise = promise;
+        mPromise = promise;
 
         try {
             String callScheme = "fpispkpn://default";
@@ -182,9 +182,8 @@ public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule imp
 
             // mPromise.resolve(jsonObj);
             e.printStackTrace();
-            onComplete.invoke(e.getMessage());
-            // mPromise.reject(ERROR, e);
-            // mPromise = null;
+            mPromise.reject(ERROR, e);
+            mPromise = null;
         }
     }
 
@@ -423,15 +422,13 @@ public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule imp
         //     mPromise.resolve("Completed");
         //     mPromise = null;
         // }
-        // mPromise.resolve("Completed");
-        // mPromise = null;
-        onComplete.invoke("onActivityResult");
+        mPromise.resolve("Completed");
+        mPromise = null;
     }
 
     @Override
     public void onNewIntent(Intent intent) {
-        onComplete.invoke("onNewIntent");
-        // mPromise.resolve("onNewIntent");
-        // mPromise = null;
+        mPromise.resolve("onNewIntent");
+        mPromise = null;
     }
 }

@@ -12,7 +12,7 @@ public class RedirectActivity extends AppCompatActivity {
     setContentView(R.layout.activity_redirect);
     Intent intent = new Intent(this, RNStartActivityForFdikModule.class);
     intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-    startActivity(intent);
+    startActivityForResult(intent, 100);
     finish();
   }
 }
