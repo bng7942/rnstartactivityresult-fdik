@@ -46,7 +46,7 @@ public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule imp
     private String returnKey = "";
     private Uri callbackData = null;
 
-    private Promise mPromise;
+    private static Promise mPromise;
 
     private ReactApplicationContext reactContext;
     private Callback onComplete = null;
