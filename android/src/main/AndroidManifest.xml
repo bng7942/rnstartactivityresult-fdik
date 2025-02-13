@@ -8,7 +8,6 @@
         /> -->
         <activity
             android:name=".MainActivity"
-            android:launchMode="singleInstance"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,7 +16,7 @@
         </activity>
 
         <activity
-            android:name=".RNStartActivityForFdikModule"
+            android:name=".RedirectActivity"
             android:launchMode="singleTask"
             android:exported="true">
             <intent-filter>
