@@ -182,7 +182,7 @@ public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule imp
 
             // mPromise.resolve(jsonObj);
             e.printStackTrace();
-            onComplete.invoke(e.getMessage())
+            onComplete.invoke(e.getMessage());
             // mPromise.reject(ERROR, e);
             // mPromise = null;
         }
@@ -425,12 +425,12 @@ public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule imp
         // }
         // mPromise.resolve("Completed");
         // mPromise = null;
-        onComplete.invoke("onActivityResult")
+        onComplete.invoke("onActivityResult");
     }
 
     @Override
     public void onNewIntent(Intent intent) {
-        onComplete.invoke("onNewIntent")
+        onComplete.invoke("onNewIntent");
         // mPromise.resolve("onNewIntent");
         // mPromise = null;
     }
