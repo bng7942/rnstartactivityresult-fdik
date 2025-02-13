@@ -46,7 +46,7 @@ public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule imp
     private String returnKey = "";
     private Uri callbackData = null;
 
-    public static Promise mPromise;
+    private Promise mPromise;
 
     private ReactApplicationContext reactContext;
     private Callback onComplete = null;
@@ -103,11 +103,6 @@ public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule imp
         long time = System.currentTimeMillis();
         SimpleDateFormat dayTime = new SimpleDateFormat("yyyyMMddHHmmss");
         return dayTime.format(new Date(time));
-    }
-
-    public static void returnReact() {
-        mPromise.resolve("returnReact");
-        mPromise = null;
     }
 
     @ReactMethod
