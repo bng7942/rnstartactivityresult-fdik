@@ -35,9 +35,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import android.util.Log;
 
-public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule implements ActivityEventListener{
+public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule implements ActivityEventListener {
     private static final String ERROR = "ERROR";
     private static final String ACTIVITY_DOES_NOT_EXIST = "ACTIVITY_DOES_NOT_EXIST";
+    private static int REQUEST_CODE = 100;
     private static final int ACTIVITY_REQUEST_CODE = 4;
     public static final int MSG_REQUEST_OUTSIDEAPPR = 4;
     public static final int MSG_STATE_OK = 1;
@@ -48,6 +49,7 @@ public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule imp
     private Promise mPromise;
 
     private ReactApplicationContext reactContext;
+    private Callback onComplete = null;
 
     public RNStartActivityForFdikModule(ReactApplicationContext reactContext) {
         super(reactContext);
@@ -55,21 +57,33 @@ public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule imp
         // this.reactContext.addActivityEventListener(mActivityEventListener);
     }
 
+    // @Override
+    // protected void onNewIntent(Intent intent) {
+    //     super.onNewIntent(intent);
+    //     CallbackDataProcess();
+    // }
+
+    // public void CallbackDataProcess(){
+    //     if(null != getIntent()){
+
+    //         if(null != getIntent().getData()){
+    //             callbackData = getIntent().getData();
+    //             mPromise.resolve(callbackData.toString());
+    //             mPromise = null;
+    //         }
+    //     }
+    // }
+
     @Override
-    protected void onNewIntent(Intent intent) {
-        super.onNewIntent(intent);
-        CallbackDataProcess();
+    public void initialize() {
+        super.initialize();
+        getReactApplicationContext().addActivityEventListener(this);
     }
 
-    public void CallbackDataProcess(){
-        if(null != getIntent()){
-
-            if(null != getIntent().getData()){
-                callbackData = getIntent().getData();
-                mPromise.resolve(callbackData.toString());
-                mPromise = null;
-            }
-        }
+    @Override
+    public void onCatalystInstanceDestroy() {
+        super.onCatalystInstanceDestroy();
+        getReactApplicationContext().removeActivityEventListener(this);
     }
 
     @Override
@@ -159,7 +173,7 @@ public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule imp
 
             returnKey = key;
 
-            currentActivity.startActivityForResult(intent, ACTIVITY_REQUEST_CODE);
+            currentActivity.startActivityForResult(intent, REQUEST_CODE);
         } catch (Exception e) {
             // JSONObject jsonObj = new JSONObject();
                     
@@ -401,4 +415,17 @@ public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule imp
     //         }
     //     }        
     // };
+
+    @Override
+    public void onActivityResult(Activity activity, int requestCode, int resultCode, Intent intent) {
+        if (requestCode == REQUEST_CODE) {
+            mPromise.resolve("Completed");
+            mPromise = null;
+        }
+    }
+
+    @Override
+    public void onNewIntent(Intent intent) {
+        // Do Nothing
+    }
 }

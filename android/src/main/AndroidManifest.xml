@@ -7,13 +7,29 @@
             android:exported="true"
         /> -->
         <activity
-            android:name=".RNStartActivityForFdikModule"
+            android:name=".MainActivity"
             android:launchMode="singleInstance"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <intent-filter>
+                <!-- TODO 호출 받기 위해 필요 Start-->
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data
+                    android:host="fdik"
+                    android:scheme="eospos" />
+                <!-- TODO 호출 받기 위해 필요 End-->
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".RNStartActivityForFdikModule"
+            android:launchMode="singleTask"
+            android:exported="true">
             <intent-filter>
                 <!-- TODO 호출 받기 위해 필요 Start-->
                 <action android:name="android.intent.action.VIEW" />
