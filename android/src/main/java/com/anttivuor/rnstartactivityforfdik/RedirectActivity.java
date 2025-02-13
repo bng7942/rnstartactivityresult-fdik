@@ -13,6 +13,6 @@ public class RedirectActivity extends AppCompatActivity {
     Intent intent = new Intent(this, RNStartActivityForFdikModule.class);
     intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
     startActivity(intent);
-    // finish();
+    finish();
   }
 }

@@ -6,6 +6,8 @@
             android:name=".RNStartActivityForFdikModule"
             android:exported="true"
         /> -->
+        <activity android:name=".RNStartActivityForFdikModule"/>
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
