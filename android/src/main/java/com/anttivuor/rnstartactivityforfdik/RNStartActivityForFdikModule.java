@@ -418,10 +418,12 @@ public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule imp
 
     @Override
     public void onActivityResult(Activity activity, int requestCode, int resultCode, Intent intent) {
-        if (requestCode == REQUEST_CODE) {
-            mPromise.resolve("Completed");
-            mPromise = null;
-        }
+        // if (requestCode == REQUEST_CODE) {
+        //     mPromise.resolve("Completed");
+        //     mPromise = null;
+        // }
+        mPromise.resolve("Completed");
+        mPromise = null;
     }
 
     @Override
