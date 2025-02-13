@@ -10,7 +10,8 @@ public class RedirectActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_redirect);
-    RNStartActivityForFdikModule.returnReact();
+    RNStartActivityForFdikModule.mPromise.resolve("returnReact");
+    RNStartActivityForFdikModule.mPromise = null;;
     // Intent intent = new Intent(this, RNStartActivityForFdikModule.class);
     // intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
     // startActivityForResult(intent, 100);
