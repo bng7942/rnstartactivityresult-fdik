@@ -105,7 +105,7 @@ public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule imp
         return dayTime.format(new Date(time));
     }
 
-    public void returnReact() {
+    public static void returnReact() {
         mPromise.resolve("returnReact");
         mPromise = null;
     }
