@@ -149,10 +149,7 @@ public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule imp
 
             // returnKey = key;
 
-            currentActivity.startActivity(intent);
-
-            mPromise.resolve("Completed");
-            mPromise = null;
+            currentActivity.startActivityForResult(intent, ACTIVITY_REQUEST_CODE);
         } catch (Exception e) {
             // JSONObject jsonObj = new JSONObject();
                     
@@ -396,7 +393,7 @@ public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule imp
     // };
 
     @Override
-    public void onActivityResult(Activity activity, int requestCode, int resultCode, Intent intent) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         // if (requestCode == REQUEST_CODE) {
         //     mPromise.resolve("Completed");
         //     mPromise = null;
