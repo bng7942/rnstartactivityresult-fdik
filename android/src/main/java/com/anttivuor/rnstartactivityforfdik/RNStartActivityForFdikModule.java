@@ -145,12 +145,11 @@ public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule imp
             
             String url = builder.toString();
             Log.e("urlLog",url);
-            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));       
+            Intent intent = new Intent(Intent.ACTION_MAIN, Uri.parse(url));       
 
             // returnKey = key;
-            Bundle dataBundle = intent.getExtras();
 
-            currentActivity.startActivityForResult(intent, ACTIVITY_REQUEST_CODE, dataBundle);
+            currentActivity.startActivityForResult(intent, ACTIVITY_REQUEST_CODE);
         } catch (Exception e) {
             // JSONObject jsonObj = new JSONObject();
                     
@@ -401,7 +400,7 @@ public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule imp
 
     @Override
     public void onNewIntent(Intent intent) {
-        this.mPromise.resolve(data.getDataString());
+        this.mPromise.resolve("onNewIntent");
         this.mPromise = null;
         // super.onNewIntent(intent);
     }
