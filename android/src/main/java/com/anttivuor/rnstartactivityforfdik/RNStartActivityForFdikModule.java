@@ -148,7 +148,7 @@ public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule imp
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));       
 
             // returnKey = key;
-            Bundle dataBundle = paymentIntent.getExtras();
+            Bundle dataBundle = intent.getExtras();
 
             currentActivity.startActivityForResult(intent, ACTIVITY_REQUEST_CODE, dataBundle);
         } catch (Exception e) {
@@ -401,6 +401,6 @@ public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule imp
 
     @Override
     protected void onNewIntent(Intent intent) {
-        super.onNewIntent(intent);
+        // super.onNewIntent(intent);
     }
 }
