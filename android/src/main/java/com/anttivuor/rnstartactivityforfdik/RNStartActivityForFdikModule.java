@@ -120,7 +120,7 @@ public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule imp
             return;
         }
 
-        mPromise = promise;
+        this.mPromise = promise;
 
         try {
             String callScheme = "fpispkpn://default";
@@ -148,8 +148,9 @@ public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule imp
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));       
 
             // returnKey = key;
+            Bundle dataBundle = paymentIntent.getExtras();
 
-            currentActivity.startActivityForResult(intent, ACTIVITY_REQUEST_CODE);
+            currentActivity.startActivityForResult(intent, ACTIVITY_REQUEST_CODE, dataBundle);
         } catch (Exception e) {
             // JSONObject jsonObj = new JSONObject();
                     
@@ -158,8 +159,8 @@ public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule imp
 
             // mPromise.resolve(jsonObj);
             e.printStackTrace();
-            mPromise.reject(ERROR, e);
-            mPromise = null;
+            this.mPromise.reject(ERROR, e);
+            this.mPromise = null;
         }
     }
 
@@ -393,18 +394,13 @@ public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule imp
     // };
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        // if (requestCode == REQUEST_CODE) {
-        //     mPromise.resolve("Completed");
-        //     mPromise = null;
-        // }
-        mPromise.resolve("Completed");
-        mPromise = null;
+    public void onActivityResult(Activity activity, int requestCode, int resultCode, Intent data) {
+        this.mPromise.resolve(data.getDataString());
+        this.mPromise = null;
     }
 
     @Override
-    public void onNewIntent(Intent intent) {
-        mPromise.resolve("onNewIntent");
-        mPromise = null;
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
     }
 }
