@@ -143,37 +143,14 @@ public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule imp
                         +"&srcConfmDe=" + srcConfmDe + (0<REFERENCE_NO.length()?String.format("&REFERENCE_NO=%s",REFERENCE_NO):""));
             }
             
-            String url = builder.toString();
-            Log.e("urlLog",url);
-            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-            // intent.setAction(Intent.ACTION_VIEW);
+            // String url = builder.toString();
+            // Log.e("urlLog",url);
+            // Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));       
 
-            // intent.putExtra("cardCashSe", cardCashSe);
-            // intent.putExtra("delngSe", delngSe);
-            // intent.putExtra("total", total);
-            // intent.putExtra("vat", vat);
-            // intent.putExtra("taxxpt", taxxpt);
-            // intent.putExtra("instlmtMonth", instlmtMonth);
-            // intent.putExtra("callbackAppUr", callbackAppUr);
-            // // intent.putExtra("aditInfo", aditInfo);
-            // intent.putExtra("srcConfmNo", srcConfmNo);
-            // intent.putExtra("srcConfmDe", srcConfmDe);
-            // // intent.putExtra("barcodeNum", barcodeNum);
-            // intent.putExtra("cashNum", cashNum);
-            // intent.putExtra("trmnlno", trmnlno);
-            // intent.putExtra("prdctNo", prdctNo);
-            // intent.putExtra("bizNo", bizNo);
-            // // intent.putExtra("uscMuf", uscMuf);
-            // intent.putExtra("REFERENCE_NO", REFERENCE_NO);
-            // // intent.putExtra("KakaoDiscount", KakaoDiscount);
-            // // intent.putExtra("KakaoPayType", KakaoPayType);
-            // // intent.putExtra("PaycoDiscount", PaycoDiscount);
-            // // intent.putExtra("PaycoPayType", PaycoPayType);
-            // // intent.putExtra("cupDeposit", cupDeposit);            
+            // returnKey = key;
 
-            returnKey = key;
+            // currentActivity.startActivity(intent);
 
-            currentActivity.startActivity(intent);
             // mPromise.resolve("Completed");
             // mPromise = null;
         } catch (Exception e) {
