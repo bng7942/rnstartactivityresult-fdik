@@ -19,7 +19,7 @@
 
         <activity
             android:name=".RNStartActivityForFdikModule"
-            android:launchMode="singleTask"
+            android:launchMode="SingleInstancePerTask"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
