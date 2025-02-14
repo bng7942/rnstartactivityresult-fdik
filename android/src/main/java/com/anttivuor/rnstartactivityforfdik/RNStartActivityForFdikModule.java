@@ -143,16 +143,16 @@ public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule imp
                         +"&srcConfmDe=" + srcConfmDe + (0<REFERENCE_NO.length()?String.format("&REFERENCE_NO=%s",REFERENCE_NO):""));
             }
             
-            // String url = builder.toString();
-            // Log.e("urlLog",url);
-            // Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));       
+            String url = builder.toString();
+            Log.e("urlLog",url);
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));       
 
             // returnKey = key;
 
-            // currentActivity.startActivity(intent);
+            currentActivity.startActivity(intent);
 
-            // mPromise.resolve("Completed");
-            // mPromise = null;
+            mPromise.resolve("Completed");
+            mPromise = null;
         } catch (Exception e) {
             // JSONObject jsonObj = new JSONObject();
                     
