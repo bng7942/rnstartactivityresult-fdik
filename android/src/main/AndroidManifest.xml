@@ -2,10 +2,10 @@
           package="com.anttivuor.startactivityforfdik">
 
     <application>
-        <!-- <service
+        <service
             android:name=".RNStartActivityForFdikModule"
             android:exported="true"
-        /> -->
+        />
 
         <!-- <activity
             android:name=".RNStartActivityForFdikModule"
@@ -17,14 +17,5 @@
             </intent-filter>
         </activity> -->
 
-        <activity
-            android:name=".RNStartActivityForFdikModule"
-            android:launchMode="singleInstance"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 </manifest>

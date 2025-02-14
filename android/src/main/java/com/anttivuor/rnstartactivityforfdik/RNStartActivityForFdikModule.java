@@ -398,10 +398,10 @@ public class RNStartActivityForFdikModule extends ReactContextBaseJavaModule imp
         this.mPromise = null;
     }
 
-    @Override
-    public void onNewIntent(Intent intent) {
-        this.mPromise.resolve("onNewIntent");
-        this.mPromise = null;
-        // super.onNewIntent(intent);
-    }
+    // @Override
+    // public void onNewIntent(Intent intent) {
+    //     this.mPromise.resolve("onNewIntent");
+    //     this.mPromise = null;
+    //     // super.onNewIntent(intent);
+    // }
 }
